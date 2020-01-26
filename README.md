@@ -14,7 +14,8 @@ watcha_scraper
 
         python watcha-scraper.py -name=스파이더맨
       
-![image](https://user-images.githubusercontent.com/22663614/73131976-bfa7d080-4057-11ea-9998-fd30fd633c7e.png)
+![name_watcha](https://user-images.githubusercontent.com/22663614/73133004-28964500-4066-11ea-9378-f59dbd911854.gif)
+
 
 
 
@@ -22,7 +23,7 @@ watcha_scraper
 
         python watcha-scraper.py -code=mW4LQ6w
       
-![image](https://user-images.githubusercontent.com/22663614/73131988-f41b8c80-4057-11ea-9e7e-b18b8460d3ae.png)
+![code_watcha](https://user-images.githubusercontent.com/22663614/73133008-35b33400-4066-11ea-9cb2-0e86ed4d7f32.gif)
 
 
 
