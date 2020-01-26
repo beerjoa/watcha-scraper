@@ -27,3 +27,6 @@ watcha_scraper
 
 
 3. review 폴더에 "영화제목(개봉년도)_review.json"으로 저장
+
+
+<img width="430" alt="image" src="https://user-images.githubusercontent.com/22663614/73132023-6ee4a780-4058-11ea-9afd-194c61aa15e4.png">
