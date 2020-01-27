@@ -1,5 +1,13 @@
 watcha_scraper
 
+INSTALL
+
+  pip install -r requirements.txt
+
+
+
+USAGE
+
 
 1. "userInfo.txt"파일에 ID, PW 순으로 입력
 
@@ -13,7 +21,7 @@ watcha_scraper
         영화 제목
 
         python watcha-scraper.py -name=스파이더맨
-      
+
 ![name_watcha](https://user-images.githubusercontent.com/22663614/73133004-28964500-4066-11ea-9378-f59dbd911854.gif)
 
 
@@ -22,7 +30,7 @@ watcha_scraper
         영화 코드
 
         python watcha-scraper.py -code=mW4LQ6w
-      
+
 ![code_watcha](https://user-images.githubusercontent.com/22663614/73133008-35b33400-4066-11ea-9cb2-0e86ed4d7f32.gif)
 
 
