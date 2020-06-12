@@ -53,10 +53,9 @@ class reviewCrawl(scrapy.Spider):
         URL = self.start_urls[0].replace("changeValue",self.movieCode)
         self.fileName = self.movieCode
         self.folderName = self.folderName
-        # for url in self.start_urls:
+
         yield scrapy.Request(url=URL,
                             headers = {
-                                # 'Referer': "https://watcha.com/ko-KR/contents/{}/comments".format(self.movieCode),
                                 'x-watcha-client' : 'watcha-WebApp',
                                 'x-watcha-client-language' : 'ko',
                                 'x-watcha-client-region' : 'KR',
@@ -75,7 +74,6 @@ class reviewCrawl(scrapy.Spider):
         if next_page is not None:
             yield response.follow(next_page,
                                     headers = {
-                                    # 'Referer': "https://watcha.com/ko-KR/contents/{}/comments".format(self.movieCode),
                                     'x-watcha-client' : 'watcha-WebApp',
                                     'x-watcha-client-language' : 'ko',
                                     'x-watcha-client-region' : 'KR',
@@ -101,9 +99,8 @@ def getMovieCode(movieName):
         resp = requests.get(SEARCH_URL, params = params)
         soup = BeautifulSoup(resp.content, "html.parser")
 
-        # soup.find("ul", class_="css-1uosu8c-VisualUl-StyledHorizontalUl-StyledHorizontalUlWithContentPosterList").li.find("div", class_="css-2fzriy-ContentInfo").find("div", class_="e1m1t8xe1").text
 
-        searchRaw = soup.find("ul", class_="css-1uosu8c-VisualUl-StyledHorizontalUl-StyledHorizontalUlWithContentPosterList")
+        searchRaw = soup.find("ul", class_="css-1jp1v3u-VisualUl-StyledHorizontalUl-StyledHorizontalUlWithContentPosterList")
         searchResult = []
         for idx,li in enumerate(searchRaw.find_all("li")):
             print("{}. {}".format(idx+1, " || ".join([ i.text for i in li.find("div", class_="css-2fzriy-ContentInfo").find_all("div")])))
@@ -119,12 +116,12 @@ def getMovieCode(movieName):
 
 def getMovieName(movieCode):
     try:
-        # SEARCH_URL = "https://watcha.com/ko-KR/search?"
+
         CONTENT_URL = "https://watcha.com/ko-KR/contents/{}".format(movieCode)
         resp = requests.get(CONTENT_URL)
         soup = BeautifulSoup(resp.content, "html.parser")
-        name = soup.find("div", class_ = "css-13h49w0-PaneInner").h1.text # 모멘텀
-        year = soup.find("div", class_ = "css-13h49w0-PaneInner").div.text[:4] # 2015
+        name = soup.find("div", class_ = "css-13h49w0-PaneInner").h1.text
+        year = soup.find("div", class_ = "css-13h49w0-PaneInner").div.text[:4]
         movieName = "{}({})".format(name, year)
         return movieName
     except:
@@ -155,8 +152,6 @@ def main():
 
     movieName = getMovieName(movieCode)
 
-    # sys.exit(0)
-
     userKey, headers = getUserKey(id, pw)
 
     process = CrawlerProcess({
@@ -165,7 +160,6 @@ def main():
     process.crawl(reviewCrawl, userKey=userKey, headers=headers, movieCode=movieCode, fileName=movieName, folderName=folderName)
     process.start()
 
-    # sys.exit(0)
 
 
 
